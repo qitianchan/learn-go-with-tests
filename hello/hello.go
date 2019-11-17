@@ -1,16 +1,30 @@
 package hello
 
-import "fmt"
-
 const englishHelloPrefix = "Hello, "
+const spenishHelloPrefix = "Helo, "
+const frenchHelloPrefix = "Bonjour, "
+const french = "Franch"
+const spenish = "Spenish"
 
-func Hello(name string) string {
+
+func Hello(name, language string) string {
 	if name == "" {
-		return englishHelloPrefix + "World"
+		name = "World"
 	}
-	return englishHelloPrefix + name;
+
+	prefix := GreetingPrefix(language)
+	
+	return prefix + name
 }
 
-func main() {
-	fmt.Println(Hello("world"))
+func GreetingPrefix(language string) (prefix string) {
+	switch language {
+	case french:
+		prefix = frenchHelloPrefix
+	case spenish:
+		prefix = spenishHelloPrefix
+	default:
+		prefix = englishHelloPrefix
+	}
+	return
 }
