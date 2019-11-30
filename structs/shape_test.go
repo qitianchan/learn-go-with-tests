@@ -8,13 +8,25 @@ func assertCorrectMessage(t *testing.T, got, want float64) {
 	}
 }
 func TestPerimeter(t *testing.T) {
-	got := Perimeter(10.0, 10.0)
+	rectangle := Rectangle{10.0, 10.0}
+
+	got := rectangle.Perimeter()
 	want := 40.0
 	assertCorrectMessage(t, got, want)
 }
 
 func TestArea(t *testing.T) {
-	got := Area(12.0, 6.0)
-	want := 72.0
-	assertCorrectMessage(t, got, want)
+	t.Run("rectangle", func(t *testing.T) {
+		rectangle := Rectangle{12.0, 6.0}
+		got := rectangle.Area()
+		want := 72.0
+		assertCorrectMessage(t, got, want)
+	})
+
+	t.Run("circles", func(t *testing.T) {
+		circle := Circle{10.0}
+		got := circle.Area()
+		want := 314.1592653589793
+		assertCorrectMessage(t, got, want)
+	})
 }
